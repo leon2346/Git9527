@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示区域案例界面</title>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            var sel_pro = $("#sel_pro");
+            var sel_city = $("#sel_city");
+            var sel_district = $("#sel_district");
+
+            //请求服务器省份数据
+            $.get("/get_provinces/", function (datas) {
+                //alert(datas.provinces.length)
+                $.each(datas.provinces, function (index, item){
+                    console.log(index + "------" + item);
+                    var area_id = item[0]; //省份id
+                    var area_name = item[1]; //省份名称
+
+                    sel_pro.append("<option value='"+ area_id +"'>"+ area_name +"</option>");
+
+            })
+
+
+        })
+
+
+    </script>
+
+</head>
+<body>
+
+<h3>区域显示案例</h3>
+
+<select id="sel_pro">
+    <option>---请选择省份---</option>
+</select>
+
+<select id="sel_city">
+    <option>---请选择城市---</option>
+</select>
+
+<select id="sel_district">
+    <option>---请选择区县---</option>
+</select>
+
+
+</body>
+</html>

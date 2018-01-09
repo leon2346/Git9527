@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页显示</title>
+</head>
+<body>
+    {% for province in page %}
+        {{ province.title }} <br/>
+    {% endfor %}
+    <br/>
+{# 如果当前页面有上一页 #}
+    {% if page.has_previous %}
+        <a href="/show_page/{{ page.previous_page_number }}">上一页</a>
+    {% endif %}
+
+    {% for index in page.paginator.page_range %}
+    {# 如果是当前页,则不显示超链接 #}
+        {% if page.number == index %}
+            {{ index }}
+        {% else %}
+        <a href="/show_page/{{ index }}">{{ index }}</a>
+        {% endif %}
+    {% endfor %}
+{# 如果当前页面有下一页 #}
+    {% if page.has_next %}
+        <a href="/show_page/{{ page.next_page_number }}">下一页</a>
+    {% endif %}
+
+</body>
+</html>

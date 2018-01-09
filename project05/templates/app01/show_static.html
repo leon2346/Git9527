@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态文件使用</title>
+</head>
+
+{# 加载静态文件 #}
+{% load staticfiles %}
+
+<body>
+    <h3>静态文件使用</h3>
+
+硬编码:<br/>
+    <img src="/static/image/mm.jpg">
+
+动态引用:<br/>
+    <img src="{% static 'image/mm.jpg' %}" >
+</html>

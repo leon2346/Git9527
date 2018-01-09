@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示所有啥?!上传图片</title>
+
+</head>
+<body>
+{% for image in images  %}
+    <img src="/static/media/{{ image.path }}"> <br/>
+{% endfor %}
+
+</body>
+</html>
